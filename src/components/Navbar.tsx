@@ -13,7 +13,7 @@ export default function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="text-xl font-bold">
-            Smart Food Distribution
+          <img className="h-12 w-12 rounded-full" src="https://picsum.photos/200" alt="" />
           </Link>
           <div className="space-x-4">
             {!currentUser && (<><Button variant="ghost" asChild>
