@@ -1,9 +1,13 @@
 import { useState } from "react";
-import { useAuth } from "../context/AuthContext.jsx";
+import { useAuth } from "../context/AuthContext.js";
 import toast from "react-hot-toast";
 const useSignin = () => {
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
+  const authContext = useAuth();
+  if (!authContext) {
+    throw new Error("AuthContext is null");
+  }
+  const { login } = authContext;
 
   const SigninUser = async (email: string, password: string) => {
     if (!email || !password) {

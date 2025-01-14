@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { AuthProvider ,useAuth} from './context/AuthContext.jsx';
+import {useAuth} from './context/AuthContext.js';
 import Navbar from "./components/Navbar"
 import Home from "./components/Home"
 import SignUp from "./components/SignUp"
@@ -10,11 +10,12 @@ import useUser from './hooks/useUser.js';
 import Logout from './components/LogOut.js';
 
 function App() {
-  const { currentUser } = useAuth();
+  const authContext = useAuth();
+  const currentUser = authContext ? authContext.currentUser : null;
  
 
 
-  const { user, loading } = useUser();
+  const {loading } = useUser();
 
   // console.log(user);
   console.log(currentUser);

@@ -2,15 +2,15 @@ import { useEffect, useState } from "react"
 import { Button } from "./ui/button"
 import { Input } from "./ui/input"
 import { Label } from "./ui/label"
-import { RadioGroup, RadioGroupItem } from "./ui/radio-group"
 import useSignin from "@/hooks/useSignin"
 import { useNavigate } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
 export default function LogIn() {
   const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const {SigninUser,loading}=useSignin();
-  const { currentUser } = useAuth();
+  const [password, setPassword] = useState("");
+  const { SigninUser } = useSignin();
+  const authContext = useAuth();
+  const currentUser = authContext ? authContext.currentUser : null;
   const navigate = useNavigate();
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

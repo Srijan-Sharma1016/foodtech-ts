@@ -2,7 +2,8 @@ import { Link } from "react-router-dom"
 import { Button } from "./ui/button"
 import { useAuth } from "../context/AuthContext"
 export default function Navbar() {
-  const { currentUser } = useAuth();
+  const authContext = useAuth();
+  const currentUser = authContext ? authContext.currentUser : null;
   return (
     <nav className="bg-background border-b">
       <div className="container mx-auto px-4">

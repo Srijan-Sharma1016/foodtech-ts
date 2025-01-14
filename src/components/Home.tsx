@@ -1,11 +1,12 @@
 import { Button } from "./ui/button"
 import { Link } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
-import GridPattern from "./ui/grid-pattern";``
+import GridPattern from "./ui/grid-pattern";
 import AnimatedGradientText from "./ui/animated-gradient-text";
 import TypingAnimation from "./ui/typing-animation";
 export default function Home() {
-  const { currentUser } = useAuth();
+  const authContext = useAuth();
+  const currentUser = authContext ? authContext.currentUser : null;
   return (
     <div className="space-y-8 p-14">
       <GridPattern className="fixed top-0 left-0 w-full h-full z-0" />
@@ -25,12 +26,6 @@ export default function Home() {
         </Button>) : (<Button asChild className="w-max">
           <Link to="/signup">Get Started</Link>
         </Button>)}
-
-      </div>
-      <div className="mx-auto max-w-screen-lg w-full p-6">
-        {/* <div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl p-6">
-          <BorderBeam size={250} duration={12} delay={9} />
-        </div> */}
       </div>
     </div>
   )

@@ -1,11 +1,12 @@
-import { useAuth } from "../context/AuthContext.jsx";
+import { useAuth } from "../context/AuthContext.js";
 import { useEffect, useState } from "react";
 import { getFirestore } from "firebase/firestore";
-import { doc, getDocs, query, where, collection } from "firebase/firestore";
+import {getDocs, query, where, collection } from "firebase/firestore";
 
 const useUser = () => {
   const [loading, setLoading] = useState(false);
-  const { currentUser } = useAuth();
+  const authContext = useAuth();
+  const currentUser = authContext ? authContext.currentUser : null;
   const [user, setUser] = useState<any>({
     userId: "",
     email: "",

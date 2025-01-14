@@ -10,13 +10,14 @@ export default function SignUp() {
   const [userType, setUserType] = useState("buyer")
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
-  const [phone, setPhone] = useState<number>()
+  const [phone, setPhone] = useState<number>(0)
   const [address, setAddress] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [passwordC, setPasswordC] = useState("")
-  const [idProof, setIdProof] = useState()
-  const { currentUser } = useAuth();
+  const [idProof, setIdProof] = useState(0)
+  const authContext = useAuth();
+  const currentUser = authContext ? authContext.currentUser : null;
   const { SignupUser } = useSignup();
   const navigate = useNavigate();
   const handleSubmit = async (e: React.FormEvent) => {
@@ -71,7 +72,7 @@ export default function SignUp() {
         </div>
         <div className="space-y-2">
           <Label htmlFor="phone">Phone</Label>
-          <Input id="phone" type="tel" required value = {phone} onChange={(e)=>setPhone(e.target.value)}/>
+          <Input id="phone" type="tel" required value={phone} onChange={(e) => setPhone(Number(e.target.value))}/>
         </div>
         <div className="space-y-2">
           <Label htmlFor="address">Address</Label>
@@ -89,7 +90,7 @@ export default function SignUp() {
         </div>
         <div className="space-y-2">
           <Label htmlFor="idProof">Valid ID Proof Number</Label>
-          <Input id="idProof" type="number" required value = {idProof} onChange={(e)=>setIdProof(e.target.value)}/>
+          <Input id="idProof" type="number" required value = {idProof} onChange={(e)=>setIdProof(Number(e.target.value))}/>
         </div>
         <Button type="submit" className="w-full" onClick={handleSubmit}>
           Sign Up as {userType === "buyer" ? "Buyer" : "Seller"}

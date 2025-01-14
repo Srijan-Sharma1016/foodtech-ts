@@ -2,7 +2,7 @@ import toast from "react-hot-toast";
 import { useState } from "react";
 import { auth, db } from "@/lib/firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { collection, doc, setDoc, addDoc } from "firebase/firestore";
+import { collection,addDoc } from "firebase/firestore";
 const useSignup = () => {
   const [loading, setLoading] = useState(false);
 
