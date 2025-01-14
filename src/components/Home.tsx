@@ -1,18 +1,11 @@
 import { Button } from "./ui/button"
 import { Link } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
-import useUser from "@/hooks/useUser";
-import GridPattern from "./ui/grid-pattern";
+import GridPattern from "./ui/grid-pattern";``
 import AnimatedGradientText from "./ui/animated-gradient-text";
 import TypingAnimation from "./ui/typing-animation";
-import { BorderBeam } from "./ui/border-beam";
 export default function Home() {
   const { currentUser } = useAuth();
-
-
-
-  const { user, loading } = useUser();
-
   return (
     <div className="space-y-8 p-14">
       <GridPattern className="fixed top-0 left-0 w-full h-full z-0" />
